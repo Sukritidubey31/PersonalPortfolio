@@ -1,101 +1,250 @@
 import Image from "next/image";
+import Link from "next/link";
+import { existsSync, statSync } from "fs";
+import { join } from "path";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import HomeGrid from "@/components/HomeGrid";
+import ContactStrip from "@/components/ContactStrip";
 
-export default function Home() {
+type HeroPhoto = { src: string; width: number; height: number };
+
+function getHeroPhoto(): HeroPhoto | null {
+  try {
+    const pub = join(process.cwd(), "public");
+    const jpegPath = join(pub, "photo-output.jpeg");
+    if (existsSync(jpegPath)) {
+      // Bust Next/Image + browser cache when the file is replaced (same URL otherwise stays stale).
+      const v = statSync(jpegPath).mtimeMs;
+      return {
+        src: `/photo-output.jpeg?v=${v}`,
+        width: 1769,
+        height: 2359,
+      };
+    }
+    const profilePath = join(pub, "profile.jpg");
+    if (existsSync(profilePath)) {
+      const v = statSync(profilePath).mtimeMs;
+      return {
+        src: `/profile.jpg?v=${v}`,
+        width: 800,
+        height: 800,
+      };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export default function HomePage() {
+  const heroPhoto = getHeroPhoto();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div style={{ backgroundColor: "#FEFCFB", minHeight: "100vh" }}>
+      <Nav />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <main className="w-full max-w-site mx-auto px-5 sm:px-6 lg:px-8 pt-14 sm:pt-18 lg:pt-13 pb-6 sm:pb-8">
+        {/* Hero */}
+        <section className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-8 sm:gap-12 lg:gap-16 items-start mb-10 sm:mb-12">
+          <div className="min-w-0 max-w-2xl lg:max-w-3xl">
+            <h1
+              className="font-playfair mb-2"
+              style={{
+                fontSize: "clamp(2rem, 4vw, 2.75rem)",
+                color: "#2A1A18",
+                lineHeight: 1.12,
+              }}
+            >
+              Sukriti Dubey
+            </h1>
+            <p
+              className="font-playfair mb-5 sm:mb-6"
+              style={{
+                fontSize: "clamp(1.05rem, 2vw, 1.35rem)",
+                color: "#9A8480",
+              }}
+            >
+              Product Manager & Engineer
+            </p>
+            <p
+              className="font-lato mb-6 sm:mb-7 text-[15px] sm:text-base max-w-xl lg:max-w-2xl"
+              style={{ color: "#9A8480", lineHeight: 1.75 }}
+            >
+              I live at the intersection of technology, data, and product. 
+              With 3 years of experience across these domains, I find the problems here to be really interesting. 
+              I get excited about building 0-to-1 products, AI prototyping, workflow automation, 
+              and making data tell a story. 
+              If you want to talk tech, build something quickly, or just exchange ideas, 
+              I'm always up for it.
+            </p>
+            <div className="flex flex-wrap gap-2.5 sm:gap-3">
+              {[
+                "0-to-1 Product Builder",
+                "AI-Native",
+                "Open to Work",
+              ].map((pill) => (
+                <span
+                  key={pill}
+                  className="text-[11px] sm:text-xs px-3.5 py-1.5 sm:px-4 sm:py-2 font-lato"
+                  style={{
+                    backgroundColor: "#FAF3EF",
+                    border: "0.5px solid #EDD4CC",
+                    borderRadius: "20px",
+                    color: "#9A8480",
+                  }}
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+
+            {/* Education: under intro, left of photo (side by side) */}
+            <div className="mt-6 sm:mt-7 grid grid-cols-2 gap-2.5 sm:gap-3 w-full max-w-xl lg:max-w-2xl">
+              {[
+                {
+                  initials: "C",
+                  initialsStyle: { backgroundColor: "#EDE9F8", color: "#5C519A" },
+                  school: "Cornell University",
+                  degree: "M.Eng. · Engineering Management",
+                  tags: ["May 2025", "GPA 3.9"],
+                },
+                {
+                  initials: "V",
+                  initialsStyle: { backgroundColor: "#F2E2DA", color: "#A06058" },
+                  school: "VIT University",
+                  degree: "B.Tech. · Computer Science",
+                  tags: ["June 2022", "CGPA 9.07"],
+                },
+              ].map((edu) => (
+                <div
+                  key={edu.school}
+                  className="rounded-lg p-3 sm:p-3.5 flex items-start gap-2.5 min-w-0"
+                  style={{
+                    border: "0.5px solid #F2E2DA",
+                    backgroundColor: "#FEFCFB",
+                    borderRadius: "10px",
+                    boxShadow: "0 1px 0 rgba(42, 26, 24, 0.04)",
+                  }}
+                >
+                  <div
+                    className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-playfair font-medium text-[12px] sm:text-[13px]"
+                    style={edu.initialsStyle}
+                  >
+                    {edu.initials}
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className="font-playfair font-medium text-[12px] sm:text-[13px] leading-snug"
+                      style={{ color: "#2A1A18" }}
+                    >
+                      {edu.school}
+                    </p>
+                    <p
+                      className="font-lato mt-0.5 text-[10px] sm:text-[11px] leading-snug"
+                      style={{ color: "#9A8480" }}
+                    >
+                      {edu.degree}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-1.5 sm:mt-2">
+                      {edu.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-md font-lato"
+                          style={{
+                            backgroundColor: "#FAF3EF",
+                            border: "0.5px solid #F2E2DA",
+                            color: "#9A8480",
+                          }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="shrink-0 w-[min(82vw,280px)] sm:w-[min(34vw,300px)] lg:w-[min(28vw,340px)] mx-auto sm:mx-0 rounded-xl overflow-hidden self-start"
+            style={{ backgroundColor: "#FAF0EC" }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            {heroPhoto ? (
+              <Image
+                src={heroPhoto.src}
+                alt="Sukriti Dubey"
+                width={heroPhoto.width}
+                height={heroPhoto.height}
+                className="w-full h-auto align-bottom block rounded-xl"
+                sizes="(max-width: 640px) min(82vw, 280px), (max-width: 1024px) min(34vw, 300px), min(28vw, 340px)"
+                priority
+              />
+            ) : (
+              <span
+                className="text-xs text-center font-lato px-3 py-8 block"
+                style={{ color: "#A4918D" }}
+              >
+                your photo
+              </span>
+            )}
+          </div>
+        </section>
+        {/* AI chat entry point: full-width band below hero */}
+        <section
+          className="-mx-5 sm:-mx-6 lg:-mx-8 mb-12 sm:mb-14"
+          style={{
+            backgroundColor: "#FAF3EF",
+            borderTop: "0.5px solid #F2E2DA",
+            borderBottom: "0.5px solid #F2E2DA",
+          }}
+        >
+          <div className="w-full max-w-site mx-auto px-5 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sm:gap-8">
+            <div className="min-w-0 flex-1">
+              <p
+                className="text-[11px] sm:text-xs uppercase tracking-widest font-playfair font-medium mb-2"
+                style={{ color: "#D4948A" }}
+              >
+                Portfolio AI
+              </p>
+              <h2
+                className="font-playfair mb-2 text-lg sm:text-xl"
+                style={{ color: "#2A1A18" }}
+              >
+                Not sure where to start? Scroll to explore, or just ask Sukriti&apos;s AI.
+              </h2>
+              <p
+                className="font-lato text-[13px] sm:text-[14px] leading-relaxed max-w-xl"
+                style={{ color: "#9A8480" }}
+              >
+                Ask anything about my experience, projects, or skills.
+              </p>
+            </div>
+            <Link
+              href="/ask"
+              className="font-lato shrink-0 self-start sm:self-center text-center text-[13px] font-medium px-5 py-2.5 sm:px-6 sm:py-3"
+              style={{
+                backgroundColor: "#D4948A",
+                color: "#fff",
+                borderRadius: 20,
+                textDecoration: "none",
+              }}
+            >
+              Start a conversation →
+            </Link>
+          </div>
+        </section>
+
+        {/* Navigate: Experience, Projects, Extracurriculars, Blogs */}
+        <HomeGrid />
+
+        {/* Contact strip */}
+        <ContactStrip />
+
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer />
     </div>
   );
 }

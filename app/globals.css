@@ -3,25 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #FEFCFB;
+  --bg-secondary: #FAF3EF;
+  --border-light: #F2E2DA;
+  --border-mid: #EDD4CC;
+  --accent: #D4948A;
+  --accent-dark: #A06058;
+  --accent-deeper: #2A1A18;
+  --text-primary: #2A1A18;
+  --text-secondary: #9A8480;
+  --text-muted: #A4918D;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FEFCFB;
+  color: #2A1A18;
+  /* Body UI font: Lato via `font-lato` on <body> in layout.tsx */
+  font-size: 13px;
+  line-height: 1.65;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Match UI body text: avoid browser monospace defaults on code blocks */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-lato), system-ui, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Collapsible case study sections (ChurnLens, Zerve, etc.) */
+.churnlens-details > summary,
+.portfolio-details > summary {
+  list-style: none;
+}
+.churnlens-details > summary::-webkit-details-marker,
+.portfolio-details > summary::-webkit-details-marker {
+  display: none;
 }
