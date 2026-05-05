@@ -2,11 +2,18 @@
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    // Allow cache-busted hero URLs like /photo-output.jpeg?v=<mtime> (Next 16 requires this)
+    // Allow local assets and Google Drive-hosted images.
     localPatterns: [
       { pathname: "/photo-output.jpeg" },
       { pathname: "/profile.jpg" },
       { pathname: "/extracurriculars/**" },
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+        pathname: "/uc",
+      },
     ],
   },
   serverExternalPackages: ["resend"],

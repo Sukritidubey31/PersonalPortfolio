@@ -25,7 +25,7 @@ const ITEMS: RowItem[] = [
     subtitle: "Industry Conference",
     description:
       "Volunteered at DeveloperWeek, one of the world's largest developer conferences. Helped with event operations, attendee support, and session coordination.",
-    imageSrc: "/extracurriculars/developer_week.jpeg",
+    imageSrc: "https://drive.google.com/uc?export=view&id=1CZ10b-25bpd8G4P_sGPeBj8guhOMJVmR",
     imageAlt: "DeveloperWeek",
     imageLeft: true,
   },
@@ -34,7 +34,7 @@ const ITEMS: RowItem[] = [
     subtitle: "Product Management Conference",
     description:
       "Volunteered at ProductCon, one of the largest PM conferences globally. Supported event logistics and connected with the product community.",
-    imageSrc: "/extracurriculars/product_con.jpeg",
+    imageSrc: "https://drive.google.com/uc?export=view&id=11GR2bSB4A3o2Md8744BdwGabdhTvD45t",
     imageAlt: "ProductCon",
     imageLeft: false,
   },
@@ -44,7 +44,7 @@ const ITEMS: RowItem[] = [
     description:
       "Helped organize Slope Day, Cornell's beloved end-of-year celebration. Coordinated logistics, managed volunteer teams, and made sure thousands of students had a great last day of classes.",
     badge: "Cornell",
-    imageSrc: "/extracurriculars/slope_day.JPG",
+    imageSrc: "https://drive.google.com/uc?export=view&id=1RhisHMnmgDMu2CHJpQznZH3MBvMAzUH2",
     imageAlt: "Slope Day",
     imageLeft: true,
   },
@@ -53,7 +53,7 @@ const ITEMS: RowItem[] = [
     subtitle: "J.P. Morgan Chase",
     description:
       "Organized J.P. Morgan's Code for Good hackathon, connecting technologists with nonprofits to build social impact solutions. Managed event coordination, participant experience, and day-of operations.",
-    imageSrc: "/extracurriculars/cfg.jpg",
+    imageSrc: "https://drive.google.com/uc?export=view&id=1wXjRnP3saN4CE5rSZFooyssO9xC0Mcdk",
     imageAlt: "Code for Good",
     imageLeft: false,
   },
@@ -63,7 +63,7 @@ const ITEMS: RowItem[] = [
     description:
       "Served on the board as Events Head, planned and ran film screenings, panel discussions, and cultural events for the university community. Managed a team, handled sponsorships, and grew the society's presence on campus.",
     badge: "VIT",
-    imageSrc: "/extracurriculars/vfs.jpg",
+    imageSrc: "https://drive.google.com/uc?export=view&id=1745cIeUJgwynaoWO4pMkB2DLUx4YeXq7",
     imageAlt: "VIT Film Society",
     imageLeft: true,
   },
@@ -73,7 +73,7 @@ const ITEMS: RowItem[] = [
     description:
       "Volunteered to teach children at a public primary school as part of VIT's BIF chapter, a community outreach and education initiative. Ran sessions, prepared simple lesson plans, and worked with kids who didn't have access to quality education resources.",
     badge: "VIT",
-    imageSrc: "/extracurriculars/bif.jpg",
+    imageSrc: "https://drive.google.com/uc?export=view&id=1OvGrqIjMJsaIakyvrvAcQcbhOE1Pgicj",
     imageAlt: "BIF Chapter",
     imageLeft: false,
   },

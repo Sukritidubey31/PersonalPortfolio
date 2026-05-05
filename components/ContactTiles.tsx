@@ -29,19 +29,19 @@ const CONTACT_TILES = [
 /** PDFs in /public — filenames must match exactly (spaces encoded for stable links). */
 const RESUME_VERSIONS = [
   {
-    href: "/Sukriti%20Dubey%20-%20Resume%20Analyst.pdf",
+    href: "https://drive.google.com/file/d/14a_15MErVwbiktnwvKa3Sb8DLJJ4Pgh_/view?usp=drive_link",
     title: "Data & analytics lens",
     description:
       "Highlights metrics, experimentation, and analytical depth — best for data / analytics roles.",
   },
   {
-    href: "/Sukriti%20Dubey%20-%20Resume%20Product.pdf",
+    href: "https://drive.google.com/file/d/19rrvdg6ejWuTClKszj6MRzjFhjP77Tev/view?usp=drive_link",
     title: "Product & strategy lens",
     description:
       "Highlights ownership, discovery, and outcomes — best for product management roles.",
   },
   {
-    href: "/Sukriti%20Dubey%20-%20Resume%20Engineering.pdf",
+    href: "https://drive.google.com/file/d/1xOaoMx2GLeANIJMXTwa9JT1WX6HjmE-0/view?usp=drive_link",
     title: "Engineering & systems lens",
     description:
       "Highlights shipping software and technical execution — best for engineering roles.",
@@ -137,7 +137,8 @@ export default function ContactTiles() {
             <li key={v.href}>
               <a
                 href={v.href}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block rounded-lg p-3.5 sm:p-4 transition-colors"
                 style={{
                   ...tileSurfaceStyle,

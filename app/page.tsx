@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { existsSync, statSync } from "fs";
-import { join } from "path";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import HomeGrid from "@/components/HomeGrid";
@@ -9,36 +7,14 @@ import ContactStrip from "@/components/ContactStrip";
 
 type HeroPhoto = { src: string; width: number; height: number };
 
-function getHeroPhoto(): HeroPhoto | null {
-  try {
-    const pub = join(process.cwd(), "public");
-    const jpegPath = join(pub, "photo-output.jpeg");
-    if (existsSync(jpegPath)) {
-      // Bust Next/Image + browser cache when the file is replaced (same URL otherwise stays stale).
-      const v = statSync(jpegPath).mtimeMs;
-      return {
-        src: `/photo-output.jpeg?v=${v}`,
-        width: 1769,
-        height: 2359,
-      };
-    }
-    const profilePath = join(pub, "profile.jpg");
-    if (existsSync(profilePath)) {
-      const v = statSync(profilePath).mtimeMs;
-      return {
-        src: `/profile.jpg?v=${v}`,
-        width: 800,
-        height: 800,
-      };
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
+const HERO_PHOTO: HeroPhoto = {
+  src: "https://drive.google.com/uc?export=view&id=1hB9TioNOiT_V-Bi8oD00KxcABG2NfmXO",
+  width: 1769,
+  height: 2359,
+};
 
 export default function HomePage() {
-  const heroPhoto = getHeroPhoto();
+  const heroPhoto = HERO_PHOTO;
 
   return (
     <div style={{ backgroundColor: "#FEFCFB", minHeight: "100vh" }}>
