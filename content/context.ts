@@ -17,6 +17,11 @@ ZetaCrush (Early-Stage B2B Startup) : Product Manager, Sep 2025–Present
 - A/B tested onboarding funnel: +23% day-7 retention, +18% activation rate, -2 days time to first value
 - Built Looker Studio dashboards tracking 15+ KPIs, cut reporting time 60%
 - Shipped Python integrations for 30+ early users, authored internal automation scripts
+- Sourced and enriched 500+ qualified leads using Clay to build targeted datasets across key market segments
+- Executed n8n automated cold email campaigns: 25% response rate, 40+ customer discovery calls scheduled
+- Built Salesforce integrations to sync customer data and automate lead tracking, reducing manual data entry by 40%
+- Migrated CRM from Salesforce to HubSpot, centralizing 1000+ leads, saving ~40 hours via automated pipelines
+- Achieved 70% open rate and 25% reply rate across HubSpot email sequences; built funnel dashboards to track and optimize targeting
 
 J.P. Morgan Chase : Commercial Banking
 Associate, Software Engineer 2 (Jan 2024–Jul 2024):
@@ -64,6 +69,7 @@ Engineering: Python, Java, SQL, JavaScript, TypeScript, FastAPI, Spring Boot, Ne
 Data/ML: XGBoost, scikit-learn, SVM, Tableau, Looker Studio, Power BI, Streamlit, A/B Testing, Pandas, Seaborn, Plotly
 Product: 0-to-1, PRD, user research, roadmapping, RICE, OKRs/KPIs, Agile/Scrum, Jira, Confluence, Figma, GTM strategy, A/B testing, funnel analysis
 AI/LLM: Anthropic Claude API, RAG, prompt engineering, open-weight LLMs, pgvector
+- CRM and outreach tools: Clay, HubSpot, Salesforce, n8n
 
 EXTRACURRICULARS
 - DeveloperWeek : Volunteer

@@ -143,6 +143,46 @@ export default function ExperiencePage() {
                 tracks={["Product", "Engineering"]}
               />
             )}
+            {show(["Product", "Data"]) && (
+              <StoryCard
+                badge={{ label: "500+ leads sourced", color: "green" }}
+                headline="Conducted customer discovery by sourcing and enriching 500+ qualified leads using Clay"
+                body="Built targeted datasets across key market segments using Clay to source and enrich qualified leads. Used these datasets to inform product strategy and validate which customer segments had the strongest product-market fit signal."
+                techTags={["Clay", "Lead Enrichment", "Market Research"]}
+                impactTags={["500+ leads sourced", "Product strategy informed"]}
+                tracks={["Product", "Data"]}
+              />
+            )}
+            {show(["Product", "Engineering"]) && (
+              <StoryCard
+                badge={{ label: "25% response rate", color: "green" }}
+                headline="Executed cold email outreach campaigns via n8n automation, achieving 25% response rate and 40+ discovery calls"
+                body="Built automated cold email outreach workflows using n8n, achieving a 25% response rate and scheduling 40+ customer discovery calls. Used findings directly to validate product-market fit assumptions and shape the roadmap."
+                techTags={["n8n", "Automation", "Cold Outreach"]}
+                impactTags={["25% response rate", "40+ discovery calls", "PMF validation"]}
+                tracks={["Product", "Engineering"]}
+              />
+            )}
+            {show(["Product", "Engineering", "Data"]) && (
+              <StoryCard
+                badge={{ label: "40% less manual entry", color: "green" }}
+                headline="Built Salesforce integrations and migrated CRM stack to HubSpot, centralizing 1000+ leads"
+                body="Built Salesforce integrations to sync customer data and automate lead tracking, improving sales pipeline visibility and reducing manual data entry by 40%. Later migrated the full CRM and outreach stack from Salesforce to HubSpot, centralizing 1000+ leads and saving ~40 hours of manual work through automated pipelines."
+                techTags={["Salesforce", "HubSpot", "CRM", "Data Pipelines"]}
+                impactTags={["40% less manual entry", "1000+ leads centralized", "40 hrs saved"]}
+                tracks={["Product", "Engineering", "Data"]}
+              />
+            )}
+            {show(["Product", "Data"]) && (
+              <StoryCard
+                badge={{ label: "70% open rate", color: "green" }}
+                headline="Achieved 70% open rate and 25% reply rate across HubSpot email sequences with funnel dashboards"
+                body="Built and optimized HubSpot email sequences achieving a 70% open rate and 25% reply rate. Created dashboards to track funnel progression and optimize targeting strategy based on engagement data."
+                techTags={["HubSpot", "Email Sequences", "Dashboard Design"]}
+                impactTags={["70% open rate", "25% reply rate", "Funnel optimization"]}
+                tracks={["Product", "Data"]}
+              />
+            )}
           </div>
         </section>
 
